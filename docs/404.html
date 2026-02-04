@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found</title>
+  <script>
+    // Redirect to the appropriate app based on the path
+    const path = window.location.pathname;
+    if (path.startsWith('/medical-labeling')) {
+      window.location.href = '/medical-labeling/';
+    } else if (path.startsWith('/speaker-diarization')) {
+      window.location.href = '/speaker-diarization/';
+    } else if (path.startsWith('/cephalometric')) {
+      window.location.href = '/cephalometric/';
+    } else {
+      window.location.href = '/medical-labeling/';
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
