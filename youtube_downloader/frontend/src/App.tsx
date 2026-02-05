@@ -49,7 +49,7 @@ function AppHeader() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <AppHeader />
       <div className="pt-14">
         <Routes>
