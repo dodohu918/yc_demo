@@ -1,104 +1,62 @@
-import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
-import { Image as ImageIcon, Activity, CheckCircle } from 'lucide-react'
-import { getImages, getPredictionStatus, UPLOADS_BASE_URL } from '@/utils/api'
+import { Crosshair, MousePointer, ZoomIn } from 'lucide-react'
+
+const DEMO_IMAGE_URL = `${import.meta.env.BASE_URL}demo_xray_1.jpg`
 
 export default function Dashboard() {
-  const { data: images } = useQuery({
-    queryKey: ['images'],
-    queryFn: () => getImages().then((r) => r.data),
-  })
-
-  const { data: mlStatus } = useQuery({
-    queryKey: ['ml-status'],
-    queryFn: () => getPredictionStatus().then((r) => r.data),
-  })
-
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-8">Dashboard</h1>
+    <div className="p-8 max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold mb-2">Cephalometric Landmark Annotation</h1>
+      <p className="text-slate-500 mb-8">
+        AI-assisted tool for marking anatomical landmarks on cephalometric X-rays.
+      </p>
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <ImageIcon className="text-blue-600" size={24} />
-            </div>
-            <div>
-              <p className="text-sm text-slate-500">Total Images</p>
-              <p className="text-2xl font-bold">{images?.length ?? 0}</p>
-            </div>
+      {/* Demo card */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="md:flex">
+          {/* Demo image thumbnail */}
+          <div className="md:w-64 bg-slate-900 flex-shrink-0">
+            <img
+              src={DEMO_IMAGE_URL}
+              alt="Cephalometric X-ray Sample"
+              className="w-full h-64 md:h-full object-cover opacity-90"
+            />
           </div>
-        </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-green-100 rounded-lg">
-              <CheckCircle className="text-green-600" size={24} />
-            </div>
+          {/* Info + CTA */}
+          <div className="p-6 flex flex-col justify-between">
             <div>
-              <p className="text-sm text-slate-500">Annotated</p>
-              <p className="text-2xl font-bold">0</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-          <div className="flex items-center gap-4">
-            <div className={`p-3 rounded-lg ${mlStatus?.model_loaded ? 'bg-green-100' : 'bg-yellow-100'}`}>
-              <Activity className={mlStatus?.model_loaded ? 'text-green-600' : 'text-yellow-600'} size={24} />
-            </div>
-            <div>
-              <p className="text-sm text-slate-500">ML Model</p>
-              <p className="text-lg font-semibold">
-                {mlStatus?.model_loaded ? 'Ready' : 'Not Loaded'}
+              <h2 className="text-lg font-semibold mb-2">Try the Demo</h2>
+              <p className="text-sm text-slate-600 mb-4">
+                Click on a cephalometric X-ray to annotate 19 standard landmarks.
+                Your annotations are saved locally in your browser.
               </p>
-              {mlStatus && (
-                <p className="text-xs text-slate-400">Device: {mlStatus.device}</p>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Quick Actions */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-        <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
-        <div className="flex gap-4">
-          <Link
-            to="/images"
-            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
-          >
-            Upload Images
-          </Link>
-        </div>
-      </div>
-
-      {/* Recent Images */}
-      {images && images.length > 0 && (
-        <div className="mt-8">
-          <h2 className="text-lg font-semibold mb-4">Recent Images</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {images.slice(0, 6).map((image) => (
-              <Link
-                key={image.id}
-                to={`/annotate/${image.id}`}
-                className="group relative aspect-square bg-slate-100 rounded-lg overflow-hidden hover:ring-2 hover:ring-primary-500 transition-all"
-              >
-                <img
-                  src={`${UPLOADS_BASE_URL}/${image.filename}`}
-                  alt={image.original_filename}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-white text-sm">Annotate</span>
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <MousePointer size={16} className="text-primary-500" />
+                  Select a landmark, then click on the image to place it
                 </div>
-              </Link>
-            ))}
+                <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <ZoomIn size={16} className="text-primary-500" />
+                  Scroll to zoom, drag to pan, adjust brightness/contrast
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <Crosshair size={16} className="text-primary-500" />
+                  19 standard cephalometric landmarks to annotate
+                </div>
+              </div>
+            </div>
+
+            <Link
+              to="/demo"
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
+            >
+              Start Annotating
+            </Link>
           </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }
