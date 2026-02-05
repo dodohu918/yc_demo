@@ -1,6 +1,6 @@
 import { useAnnotationStore } from '@/hooks/useAnnotationStore'
 import { cn } from '@/utils/cn'
-import { Check, Sparkles } from 'lucide-react'
+import { Check, Sparkles, X } from 'lucide-react'
 import QuickFeedback, { AcceptAllButton } from './QuickFeedback'
 
 // Same colors as in AnnotationCanvas
@@ -31,7 +31,7 @@ interface LandmarkPanelProps {
 }
 
 export default function LandmarkPanel({ imageId }: LandmarkPanelProps) {
-  const { landmarks, annotations, selectedLandmarkId, setSelectedLandmark } =
+  const { landmarks, annotations, selectedLandmarkId, setSelectedLandmark, removeAnnotation } =
     useAnnotationStore()
 
   const annotatedCount = annotations.size
@@ -89,46 +89,62 @@ export default function LandmarkPanel({ imageId }: LandmarkPanelProps) {
                 isAiPredicted && 'bg-purple-50'
               )}
             >
-              <button
-                onClick={() => setSelectedLandmark(isSelected ? null : landmark.id)}
-                className="w-full text-left px-3 py-2 flex items-center gap-3"
-              >
-                {/* Status icon */}
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{
-                    backgroundColor: isAnnotated ? color : 'transparent',
-                    border: `2px solid ${color}`,
-                  }}
+              <div className="flex items-center">
+                <button
+                  onClick={() => setSelectedLandmark(isSelected ? null : landmark.id)}
+                  className="flex-1 text-left px-3 py-2 flex items-center gap-3"
                 >
-                  {isAnnotated && <Check size={14} className="text-white" />}
-                </div>
-
-                {/* Landmark info */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium text-sm" style={{ color }}>
-                      {landmark.abbreviation}
-                    </span>
-                    <span className="text-sm text-slate-700 truncate">
-                      {landmark.name}
-                    </span>
+                  {/* Status icon */}
+                  <div
+                    className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{
+                      backgroundColor: isAnnotated ? color : 'transparent',
+                      border: `2px solid ${color}`,
+                    }}
+                  >
+                    {isAnnotated && <Check size={14} className="text-white" />}
                   </div>
-                  {annotation && (
+
+                  {/* Landmark info */}
+                  <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <p className="text-xs text-slate-400">
-                        ({Math.round(annotation.x)}, {Math.round(annotation.y)})
-                        {annotation.source === 'ai_predicted' && (
-                          <span className="ml-1 text-purple-500 font-medium">AI</span>
-                        )}
-                        {annotation.source === 'ai_corrected' && (
-                          <span className="ml-1 text-green-500">Reviewed</span>
-                        )}
-                      </p>
+                      <span className="font-medium text-sm" style={{ color }}>
+                        {landmark.abbreviation}
+                      </span>
+                      <span className="text-sm text-slate-700 truncate">
+                        {landmark.name}
+                      </span>
                     </div>
-                  )}
-                </div>
-              </button>
+                    {annotation && (
+                      <div className="flex items-center gap-2">
+                        <p className="text-xs text-slate-400">
+                          ({Math.round(annotation.x)}, {Math.round(annotation.y)})
+                          {annotation.source === 'ai_predicted' && (
+                            <span className="ml-1 text-purple-500 font-medium">AI</span>
+                          )}
+                          {annotation.source === 'ai_corrected' && (
+                            <span className="ml-1 text-green-500">Reviewed</span>
+                          )}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </button>
+
+                {/* Delete annotation button */}
+                {isAnnotated && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      removeAnnotation(landmark.id)
+                    }}
+                    className="p-1.5 mr-2 rounded hover:bg-red-100 text-slate-300 hover:text-red-500 transition-colors"
+                    title={`Remove ${landmark.abbreviation} annotation`}
+                  >
+                    <X size={14} />
+                  </button>
+                )}
+              </div>
 
               {/* Quick feedback actions for AI predictions */}
               {annotation && imageId && (

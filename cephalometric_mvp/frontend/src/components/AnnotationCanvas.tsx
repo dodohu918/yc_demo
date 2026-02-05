@@ -233,15 +233,15 @@ export default function AnnotationCanvas({
                 />
                 {/* Label */}
                 <Text
-                  x={annotation.x + 10}
-                  y={annotation.y - 6}
+                  x={annotation.x + 12}
+                  y={annotation.y - 24}
                   text={getLandmarkAbbr(annotation.landmark_id)}
-                  fontSize={12}
+                  fontSize={48}
                   fill={color}
                   fontStyle="bold"
                   shadowColor="black"
-                  shadowBlur={2}
-                  shadowOpacity={0.8}
+                  shadowBlur={4}
+                  shadowOpacity={0.9}
                 />
               </Group>
             )
