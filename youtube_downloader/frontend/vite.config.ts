@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? '/speaker-diarization/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/yc_demo/speaker-diarization/' : '/',
   server: {
     port: 5174,
     proxy: {
