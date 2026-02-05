@@ -1,10 +1,17 @@
 """
-Seed data for the 19 standard cephalometric landmarks.
+Seed data for the 19 standard cephalometric landmarks and demo images.
 """
+import os
+import shutil
+import uuid
+from pathlib import Path
+
+from PIL import Image as PILImage
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.db.models import Landmark
+from app.db.models import Landmark, Image
+from app.core.config import get_settings
 
 # 19 Standard Cephalometric Landmarks (matching CSV column order)
 LANDMARKS = [
@@ -165,3 +172,65 @@ def get_landmark_by_index(index: int) -> dict:
     if 1 <= index <= len(LANDMARKS):
         return LANDMARKS[index - 1]
     raise ValueError(f"Invalid landmark index: {index}. Must be 1-19.")
+
+
+# Demo images to seed
+DEMO_IMAGES = [
+    {"filename": "demo_xray_1.jpg", "original_name": "Cephalometric X-ray Sample 1"},
+    {"filename": "demo_xray_2.jpg", "original_name": "Cephalometric X-ray Sample 2"},
+]
+
+
+async def seed_demo_images(session: AsyncSession) -> None:
+    """Seed demo images if they don't exist."""
+    settings = get_settings()
+
+    # Check if demo images already exist
+    result = await session.execute(select(Image).limit(1))
+    if result.scalar_one_or_none() is not None:
+        print("Images already exist, skipping demo image seeding...")
+        return
+
+    # Find demo images directory (relative to this file)
+    demo_images_dir = Path(__file__).parent.parent.parent / "demo_images"
+    if not demo_images_dir.exists():
+        print(f"Demo images directory not found: {demo_images_dir}")
+        return
+
+    # Ensure upload directory exists
+    settings.upload_path.mkdir(parents=True, exist_ok=True)
+
+    for demo_img in DEMO_IMAGES:
+        src_path = demo_images_dir / demo_img["filename"]
+        if not src_path.exists():
+            print(f"Demo image not found: {src_path}")
+            continue
+
+        # Generate unique filename
+        image_id = uuid.uuid4()
+        dest_filename = f"{image_id}.jpg"
+        dest_path = settings.upload_path / dest_filename
+
+        # Copy image to uploads directory
+        shutil.copy(src_path, dest_path)
+
+        # Get image dimensions
+        with PILImage.open(dest_path) as img:
+            width, height = img.size
+
+        # Create database entry
+        image = Image(
+            id=image_id,
+            filename=dest_filename,
+            original_filename=demo_img["original_name"],
+            file_path=str(dest_path),
+            file_size=dest_path.stat().st_size,
+            width=width,
+            height=height,
+            mime_type="image/jpeg",
+        )
+        session.add(image)
+        print(f"Seeded demo image: {demo_img['original_name']}")
+
+    await session.commit()
+    print(f"Seeded {len(DEMO_IMAGES)} demo images.")

@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.core.config import get_settings
 from app.db.session import engine, Base, async_session_maker
-from app.db.seed import seed_landmarks
+from app.db.seed import seed_landmarks, seed_demo_images
 from app.api.endpoints import images, landmarks, annotations, projects, predictions, datasets
 
 settings = get_settings()
@@ -33,9 +33,10 @@ async def lifespan(app: FastAPI):
         await conn.run_sync(Base.metadata.create_all)
     print("Database tables created.")
 
-    # Seed landmarks on startup
+    # Seed landmarks and demo images on startup
     async with async_session_maker() as session:
         await seed_landmarks(session)
+        await seed_demo_images(session)
 
     yield
 
