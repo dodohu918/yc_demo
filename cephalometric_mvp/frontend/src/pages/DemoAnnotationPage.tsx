@@ -30,6 +30,30 @@ const DEMO_LANDMARKS: Landmark[] = [
   { id: 19, abbreviation: 'Ar', name: 'Articulare', description: 'Intersection of posterior border of ramus and inferior border of cranial base', display_order: 19 },
 ]
 
+// Ground truth landmark coordinates for the demo image (from test1_senior.csv, image 289.jpg)
+// Format: landmark_id → { x, y }
+const GROUND_TRUTH: Record<number, { x: number; y: number }> = {
+  1:  { x: 797,  y: 1034 },  // S  - Sella
+  2:  { x: 1399, y: 908  },  // N  - Nasion
+  3:  { x: 1298, y: 1174 },  // Or - Orbitale
+  4:  { x: 588,  y: 1245 },  // Po - Porion
+  5:  { x: 1483, y: 1508 },  // A  - A Point
+  6:  { x: 1428, y: 1778 },  // B  - B Point
+  7:  { x: 1405, y: 1950 },  // Pog - Pogonion
+  8:  { x: 1331, y: 2032 },  // Gn - Gnathion
+  9:  { x: 1393, y: 2006 },  // Me - Menton
+  10: { x: 764,  y: 1783 },  // Go - Gonion
+  11: { x: 1488, y: 1629 },  // ANS
+  12: { x: 1531, y: 1662 },  // PNS
+  13: { x: 1638, y: 1553 },  // U1
+  14: { x: 1605, y: 1771 },  // U1R
+  15: { x: 1579, y: 1437 },  // L1
+  16: { x: 1499, y: 1973 },  // L1R
+  17: { x: 1009, y: 1425 },  // U6
+  18: { x: 1452, y: 1397 },  // L6
+  19: { x: 686,  y: 1336 },  // Ar - Articulare
+}
+
 // Demo image served from public/ folder
 const DEMO_IMAGE_URL = `${import.meta.env.BASE_URL}demo_xray_1.jpg`
 const DEMO_IMAGE_WIDTH = 1935
@@ -41,6 +65,7 @@ export default function DemoAnnotationPage() {
   const navigate = useNavigate()
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [demoModeToast, setDemoModeToast] = useState(false)
+  const [isPredicting, setIsPredicting] = useState(false)
 
   const {
     setAnnotations,
@@ -81,11 +106,39 @@ export default function DemoAnnotationPage() {
     }
   }, [annotations])
 
-  // AI prediction — show demo toast
-  const handlePredict = useCallback(() => {
+  // AI prediction — place ground truth landmarks with simulated delay
+  const handlePredict = useCallback(async () => {
+    if (isPredicting) return
+    setIsPredicting(true)
+
+    // Simulate model inference delay
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+
+    const now = new Date().toISOString()
+    for (const [idStr, coords] of Object.entries(GROUND_TRUTH)) {
+      const landmarkId = Number(idStr)
+      // Skip landmarks the user has already manually placed
+      if (annotations.has(landmarkId)) continue
+
+      const annotation: Annotation = {
+        id: `ai-${nextAnnotationId++}`,
+        image_id: 'demo',
+        landmark_id: landmarkId,
+        x: coords.x,
+        y: coords.y,
+        confidence: 0.85 + Math.random() * 0.12, // simulated confidence 0.85-0.97
+        source: 'ai_predicted',
+        is_visible: true,
+        created_at: now,
+        updated_at: now,
+      }
+      updateAnnotation(landmarkId, annotation)
+    }
+
+    setIsPredicting(false)
     setDemoModeToast(true)
     setTimeout(() => setDemoModeToast(false), 4000)
-  }, [])
+  }, [isPredicting, annotations, updateAnnotation])
 
   // Keyboard shortcuts
   useKeyboardShortcuts({
@@ -154,11 +207,12 @@ export default function DemoAnnotationPage() {
 
           <button
             onClick={handlePredict}
-            className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            disabled={isPredicting}
+            className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 transition-colors"
             title="Run AI prediction (Ctrl+A)"
           >
             <Wand2 size={18} />
-            AI Predict
+            {isPredicting ? 'Predicting...' : 'AI Predict'}
           </button>
         </div>
       </header>
@@ -196,9 +250,9 @@ export default function DemoAnnotationPage() {
               <Wand2 size={20} />
             </div>
             <div>
-              <h4 className="font-medium text-amber-800">Demo Mode</h4>
+              <h4 className="font-medium text-amber-800">AI Predictions Placed</h4>
               <p className="text-sm text-amber-700 mt-1">
-                AI predictions are not available in demo mode. You can still manually annotate landmarks by clicking on the image.
+                Landmarks have been placed using the AI model. Click on any landmark to adjust its position.
               </p>
             </div>
             <button
