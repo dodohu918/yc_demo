@@ -31,6 +31,7 @@ echo "Checking port availability..."
 check_port 5173 || exit 1
 check_port 5174 || exit 1
 check_port 5175 || exit 1
+check_port 5176 || exit 1
 check_port 8000 || exit 1
 check_port 8001 || exit 1
 echo -e "${GREEN}All ports available!${NC}"
@@ -61,6 +62,11 @@ echo -e "${YELLOW}Starting Cephalometric frontend (port 5175)...${NC}"
 (cd "$SCRIPT_DIR/cephalometric_mvp/frontend" && npm run dev) &
 CEPHALOMETRIC_FRONTEND_PID=$!
 
+# Start Op Note Annotation frontend (port 5176)
+echo -e "${YELLOW}Starting Op Note Annotation frontend (port 5176)...${NC}"
+(cd "$SCRIPT_DIR/note_annotation/frontend" && npm run dev) &
+OPNOTE_FRONTEND_PID=$!
+
 echo ""
 echo -e "${GREEN}============================================${NC}"
 echo -e "${GREEN}All services starting...${NC}"
@@ -69,6 +75,7 @@ echo ""
 echo -e "  Medical Labeling:      ${GREEN}http://localhost:5173${NC}"
 echo -e "  Speaker Diarization:   ${GREEN}http://localhost:5174${NC}"
 echo -e "  Cephalometric Tool:    ${GREEN}http://localhost:5175${NC}"
+echo -e "  Op Note Annotation:    ${GREEN}http://localhost:5176${NC}"
 echo ""
 echo -e "  Backend APIs:"
 echo -e "    - Diarization API:   http://localhost:8000/docs"

@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom'
-import { Home, Image, Database, Settings } from 'lucide-react'
+import { Home, Settings } from 'lucide-react'
 import { cn } from '@/utils/cn'
 
 const apps = [
@@ -15,20 +15,18 @@ const apps = [
   },
   {
     name: 'Cephalometric Tool',
-    url: import.meta.env.VITE_CEPHALOMETRIC_URL || '/',
-    isActive: true,
+    url: import.meta.env.VITE_CEPHALOMETRIC_URL || 'http://localhost:5175',
+    isActive: false,
   },
   {
     name: 'Op Note',
-    url: import.meta.env.VITE_OP_NOTE_URL || 'http://localhost:5176',
-    isActive: false,
+    url: import.meta.env.VITE_OP_NOTE_URL || '/',
+    isActive: true,
   },
 ]
 
 const navItems = [
   { path: '/dashboard', label: 'Dashboard', icon: Home },
-  { path: '/images', label: 'Images', icon: Image },
-  { path: '/datasets', label: 'Datasets', icon: Database },
 ]
 
 export default function Layout() {
@@ -64,8 +62,8 @@ export default function Layout() {
         {/* Sidebar */}
         <aside className="w-64 bg-slate-800 text-white flex flex-col fixed left-0 top-14 bottom-0">
           <div className="p-4 border-b border-slate-700">
-            <h1 className="text-xl font-bold">Cephalometric MVP</h1>
-            <p className="text-sm text-slate-400">Landmark Annotation</p>
+            <h1 className="text-xl font-bold">Op Note Annotation</h1>
+            <p className="text-sm text-slate-400">Equipment Identification</p>
           </div>
 
           <nav className="flex-1 p-4">

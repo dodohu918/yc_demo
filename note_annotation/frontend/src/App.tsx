@@ -1,0 +1,20 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Layout from './components/Layout'
+import Dashboard from './pages/Dashboard'
+import DemoAnnotationPage from './pages/DemoAnnotationPage'
+
+function App() {
+  return (
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
+        <Route path="demo" element={<DemoAnnotationPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+export default App

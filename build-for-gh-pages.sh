@@ -18,21 +18,27 @@ echo -e "${GREEN}Building all frontends for GitHub Pages...${NC}"
 echo ""
 
 # Build Medical Labeling
-echo -e "${YELLOW}[1/3] Building Medical Labeling...${NC}"
+echo -e "${YELLOW}[1/4] Building Medical Labeling...${NC}"
 (cd "$SCRIPT_DIR/medicalLabeling/medical-labeling-app" && npm run build)
 echo -e "${GREEN}Medical Labeling build complete!${NC}"
 echo ""
 
 # Build Speaker Diarization
-echo -e "${YELLOW}[2/3] Building Speaker Diarization frontend...${NC}"
+echo -e "${YELLOW}[2/4] Building Speaker Diarization frontend...${NC}"
 (cd "$SCRIPT_DIR/youtube_downloader/frontend" && npm run build)
 echo -e "${GREEN}Speaker Diarization build complete!${NC}"
 echo ""
 
 # Build Cephalometric
-echo -e "${YELLOW}[3/3] Building Cephalometric frontend...${NC}"
+echo -e "${YELLOW}[3/4] Building Cephalometric frontend...${NC}"
 (cd "$SCRIPT_DIR/cephalometric_mvp/frontend" && npm run build)
 echo -e "${GREEN}Cephalometric build complete!${NC}"
+echo ""
+
+# Build Op Note Annotation
+echo -e "${YELLOW}[4/4] Building Op Note Annotation frontend...${NC}"
+(cd "$SCRIPT_DIR/note_annotation/frontend" && npm run build)
+echo -e "${GREEN}Op Note Annotation build complete!${NC}"
 echo ""
 
 # Create docs directory structure
@@ -41,12 +47,14 @@ rm -rf "$SCRIPT_DIR/docs"
 mkdir -p "$SCRIPT_DIR/docs/medical-labeling"
 mkdir -p "$SCRIPT_DIR/docs/speaker-diarization"
 mkdir -p "$SCRIPT_DIR/docs/cephalometric"
+mkdir -p "$SCRIPT_DIR/docs/op-note"
 
 # Copy build outputs
 echo -e "${YELLOW}Copying build outputs...${NC}"
 cp -r "$SCRIPT_DIR/medicalLabeling/medical-labeling-app/dist/"* "$SCRIPT_DIR/docs/medical-labeling/"
 cp -r "$SCRIPT_DIR/youtube_downloader/frontend/dist/"* "$SCRIPT_DIR/docs/speaker-diarization/"
 cp -r "$SCRIPT_DIR/cephalometric_mvp/frontend/dist/"* "$SCRIPT_DIR/docs/cephalometric/"
+cp -r "$SCRIPT_DIR/note_annotation/frontend/dist/"* "$SCRIPT_DIR/docs/op-note/"
 
 # Create root redirect page
 cat > "$SCRIPT_DIR/docs/index.html" << 'EOF'
@@ -104,6 +112,8 @@ cat > "$SCRIPT_DIR/docs/404.html" << 'EOF'
       window.location.href = '/speaker-diarization/';
     } else if (path.startsWith('/cephalometric')) {
       window.location.href = '/cephalometric/';
+    } else if (path.startsWith('/op-note')) {
+      window.location.href = '/op-note/';
     } else {
       window.location.href = '/medical-labeling/';
     }
@@ -129,7 +139,8 @@ echo "  ├── 404.html                (SPA routing support)"
 echo "  ├── .nojekyll               (disable Jekyll processing)"
 echo "  ├── medical-labeling/       (Medical Labeling app)"
 echo "  ├── speaker-diarization/    (Speaker Diarization app)"
-echo "  └── cephalometric/          (Cephalometric Tool app)"
+echo "  ├── cephalometric/          (Cephalometric Tool app)"
+echo "  └── op-note/                (Op Note Annotation app)"
 echo ""
 echo -e "${YELLOW}Next steps:${NC}"
 echo "1. Commit and push to GitHub"

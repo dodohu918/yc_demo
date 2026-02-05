@@ -18,6 +18,11 @@ const apps = [
     url: import.meta.env.VITE_CEPHALOMETRIC_URL || 'http://localhost:5175',
     isActive: false,
   },
+  {
+    name: 'Op Note',
+    url: import.meta.env.VITE_OP_NOTE_URL || 'http://localhost:5176',
+    isActive: false,
+  },
 ];
 
 function AppHeader() {
