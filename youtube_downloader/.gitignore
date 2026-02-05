@@ -1,0 +1,59 @@
+# Downloaded media files
+downloads/
+*.mp4
+*.mp3
+*.webm
+*.mkv
+*.avi
+*.mov
+*.flv
+*.wmv
+*.m4a
+*.m4v
+*.opus
+*.ogg
+*.wav
+*.aac
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+ENV/
+
+# Environment variables (contains secrets)
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.part
+*.ytdl
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Database
+data/
+*.db

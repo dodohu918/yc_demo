@@ -1,0 +1,159 @@
+.job-apply-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.job-apply-content {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+  width: 100%;
+}
+
+.job-apply-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e1b4b;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.video-container iframe {
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.instructions-section {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.instructions-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e1b4b;
+  margin-bottom: 1.5rem;
+}
+
+.instructions-list {
+  list-style: none;
+  counter-reset: instruction-counter;
+  padding: 0;
+}
+
+.instructions-list li {
+  counter-increment: instruction-counter;
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.instructions-list li:last-child {
+  margin-bottom: 0;
+}
+
+.instructions-list li::before {
+  content: counter(instruction-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.instructions-list li strong {
+  color: #1e1b4b;
+}
+
+.test-section {
+  display: flex;
+  justify-content: center;
+}
+
+.test-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 1.2rem 3rem;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.test-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+}
+
+.test-btn .arrow {
+  font-size: 1.3rem;
+  transition: transform 0.2s ease;
+}
+
+.test-btn:hover .arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .job-apply-content {
+    padding: 7rem 1rem 2rem;
+  }
+
+  .job-apply-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .instructions-section {
+    padding: 1.5rem;
+  }
+
+  .instructions-title {
+    font-size: 1.25rem;
+  }
+
+  .instructions-list li {
+    padding-left: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .instructions-list li::before {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.8rem;
+  }
+
+  .test-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}

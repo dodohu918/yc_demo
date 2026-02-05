@@ -1,0 +1,286 @@
+import { Link } from 'react-router-dom'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import './LandingPage.css'
+
+function LandingPage() {
+  return (
+    <div className="landing-page">
+      <Header />
+
+      {/* Hero Section */}
+      <main className="hero">
+        <div className="hero-content">
+          <h1 className="hero-title">
+            Bridging the Gap Between Medical
+            <br />
+            Data and AI Development
+          </h1>
+          <p className="hero-subtitle">
+            Providing Custom Medical Data Curation and Labeling Services
+          </p>
+          <div className="hero-tags">
+            <span className="tag">Medical Data Innovation</span>
+            <span className="tag-separator">|</span>
+            <span className="tag">Clinical Labeling & Curation</span>
+            <span className="tag-separator">|</span>
+            <span className="tag">HIPAA Compliance & Governance</span>
+            <span className="tag-separator">|</span>
+            <span className="tag">Healthcare AI Partnerships</span>
+          </div>
+          <Link to="/get-started" className="cta-btn">
+            Explore more
+            <span className="arrow">→</span>
+          </Link>
+        </div>
+        <div className="hero-image">
+          <img src="/image.png" alt="Medical Labeling" />
+        </div>
+      </main>
+
+      {/* Partner Logos */}
+      <section className="partners">
+        <div className="partners-track">
+          <div className="partners-logos">
+            <img src="https://via.placeholder.com/150x50/6366f1/ffffff?text=HealthTech" alt="Partner 1" />
+            <img src="https://via.placeholder.com/150x50/8b5cf6/ffffff?text=MediCare" alt="Partner 2" />
+            <img src="https://via.placeholder.com/150x50/ec4899/ffffff?text=BioLab" alt="Partner 3" />
+            <img src="https://via.placeholder.com/150x50/f59e0b/ffffff?text=ClinicalAI" alt="Partner 4" />
+            <img src="https://via.placeholder.com/150x50/10b981/ffffff?text=MedData" alt="Partner 5" />
+            <img src="https://via.placeholder.com/150x50/3b82f6/ffffff?text=HealthAI" alt="Partner 6" />
+            <img src="https://via.placeholder.com/150x50/ef4444/ffffff?text=DiagnosticX" alt="Partner 7" />
+            <img src="https://via.placeholder.com/150x50/6366f1/ffffff?text=HealthTech" alt="Partner 1" />
+            <img src="https://via.placeholder.com/150x50/8b5cf6/ffffff?text=MediCare" alt="Partner 2" />
+            <img src="https://via.placeholder.com/150x50/ec4899/ffffff?text=BioLab" alt="Partner 3" />
+            <img src="https://via.placeholder.com/150x50/f59e0b/ffffff?text=ClinicalAI" alt="Partner 4" />
+            <img src="https://via.placeholder.com/150x50/10b981/ffffff?text=MedData" alt="Partner 5" />
+            <img src="https://via.placeholder.com/150x50/3b82f6/ffffff?text=HealthAI" alt="Partner 6" />
+            <img src="https://via.placeholder.com/150x50/ef4444/ffffff?text=DiagnosticX" alt="Partner 7" />
+          </div>
+          <div className="partners-logos" aria-hidden="true">
+            <img src="https://via.placeholder.com/150x50/6366f1/ffffff?text=HealthTech" alt="Partner 1" />
+            <img src="https://via.placeholder.com/150x50/8b5cf6/ffffff?text=MediCare" alt="Partner 2" />
+            <img src="https://via.placeholder.com/150x50/ec4899/ffffff?text=BioLab" alt="Partner 3" />
+            <img src="https://via.placeholder.com/150x50/f59e0b/ffffff?text=ClinicalAI" alt="Partner 4" />
+            <img src="https://via.placeholder.com/150x50/10b981/ffffff?text=MedData" alt="Partner 5" />
+            <img src="https://via.placeholder.com/150x50/3b82f6/ffffff?text=HealthAI" alt="Partner 6" />
+            <img src="https://via.placeholder.com/150x50/ef4444/ffffff?text=DiagnosticX" alt="Partner 7" />
+            <img src="https://via.placeholder.com/150x50/6366f1/ffffff?text=HealthTech" alt="Partner 1" />
+            <img src="https://via.placeholder.com/150x50/8b5cf6/ffffff?text=MediCare" alt="Partner 2" />
+            <img src="https://via.placeholder.com/150x50/ec4899/ffffff?text=BioLab" alt="Partner 3" />
+            <img src="https://via.placeholder.com/150x50/f59e0b/ffffff?text=ClinicalAI" alt="Partner 4" />
+            <img src="https://via.placeholder.com/150x50/10b981/ffffff?text=MedData" alt="Partner 5" />
+            <img src="https://via.placeholder.com/150x50/3b82f6/ffffff?text=HealthAI" alt="Partner 6" />
+            <img src="https://via.placeholder.com/150x50/ef4444/ffffff?text=DiagnosticX" alt="Partner 7" />
+          </div>
+        </div>
+      </section>
+
+      {/* Job Opportunities Section */}
+      <section className="opportunities">
+        <div className="opportunities-container">
+          <h2 className="opportunities-title">Explore opportunities</h2>
+
+          <div className="opportunities-controls">
+            <div className="search-container">
+              <button className="filter-menu-btn">☰</button>
+              <input type="text" placeholder="Type to search" className="search-input" />
+            </div>
+            <div className="filter-buttons">
+              <button className="filter-btn active">🔥 Trending</button>
+              <button className="filter-btn">🕐 Newest</button>
+              <button className="filter-btn">💰 Most pay</button>
+              <button className="filter-btn refer-btn">👥 Refer & earn</button>
+            </div>
+          </div>
+
+          <div className="jobs-grid">
+            {/* Job Card 1 - Links to apply page */}
+            <div className="job-card">
+              <div className="card-header">
+                <h3 className="job-title">Medical Image Labeling Specialist</h3>
+                <Link to="/apply/id=1" className="apply-btn">Apply →</Link>
+              </div>
+              <p className="job-rate">$45 - $65 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">M</span>
+                    <span className="avatar">R</span>
+                    <span className="avatar">S</span>
+                  </div>
+                  <span className="hired-count">156 hired this month</span>
+                </div>
+                <span className="earnings">💰 $800</span>
+              </div>
+            </div>
+
+            {/* Job Card 2 - Featured */}
+            <div className="job-card featured">
+              <div className="card-header">
+                <h3 className="job-title">Radiology Annotation Expert</h3>
+                <button className="apply-btn">Apply →</button>
+              </div>
+              <p className="job-rate">$60 - $85 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">D</span>
+                    <span className="avatar">A</span>
+                    <span className="avatar">K</span>
+                  </div>
+                  <span className="hired-count">203 hired this month</span>
+                </div>
+                <span className="earnings">💰 $1200</span>
+              </div>
+            </div>
+
+            {/* Job Card 3 */}
+            <div className="job-card">
+              <div className="card-header">
+                <h3 className="job-title">Pathology Data Labeling Expert</h3>
+                <button className="apply-btn">Apply →</button>
+              </div>
+              <p className="job-rate">$50 - $75 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">P</span>
+                    <span className="avatar">N</span>
+                    <span className="avatar">L</span>
+                  </div>
+                  <span className="hired-count">189 hired this month</span>
+                </div>
+                <span className="earnings">💰 $950</span>
+              </div>
+            </div>
+
+            {/* Job Card 4 */}
+            <div className="job-card">
+              <div className="card-header">
+                <h3 className="job-title">Clinical Document Annotator</h3>
+                <button className="apply-btn">Apply →</button>
+              </div>
+              <p className="job-rate">$35 - $55 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">C</span>
+                    <span className="avatar">T</span>
+                    <span className="avatar">J</span>
+                  </div>
+                  <span className="hired-count">142 hired this month</span>
+                </div>
+                <span className="earnings">💰 $650</span>
+              </div>
+            </div>
+
+            {/* Job Card 5 */}
+            <div className="job-card">
+              <div className="card-header">
+                <h3 className="job-title">DICOM Image Labeler</h3>
+                <button className="apply-btn">Apply →</button>
+              </div>
+              <p className="job-rate">$40 - $60 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">E</span>
+                    <span className="avatar">B</span>
+                    <span className="avatar">V</span>
+                  </div>
+                  <span className="hired-count">178 hired this month</span>
+                </div>
+                <span className="earnings">💰 $720</span>
+              </div>
+            </div>
+
+            {/* Job Card 6 */}
+            <div className="job-card">
+              <div className="card-header">
+                <h3 className="job-title">Medical Imaging QA Specialist</h3>
+                <button className="apply-btn">Apply →</button>
+              </div>
+              <p className="job-rate">$55 - $80 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">Q</span>
+                    <span className="avatar">F</span>
+                    <span className="avatar">M</span>
+                  </div>
+                  <span className="hired-count">167 hired this month</span>
+                </div>
+                <span className="earnings">💰 $1100</span>
+              </div>
+            </div>
+
+            {/* Job Card 7 */}
+            <div className="job-card">
+              <div className="card-header">
+                <h3 className="job-title">Healthcare Data Annotation Specialist</h3>
+                <button className="apply-btn">Apply →</button>
+              </div>
+              <p className="job-rate">$38 - $58 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">H</span>
+                    <span className="avatar">O</span>
+                    <span className="avatar">W</span>
+                  </div>
+                  <span className="hired-count">134 hired this month</span>
+                </div>
+                <span className="earnings">💰 $580</span>
+              </div>
+            </div>
+
+            {/* Job Card 8 */}
+            <div className="job-card">
+              <div className="card-header">
+                <h3 className="job-title">CT/MRI Labeling Expert</h3>
+                <button className="apply-btn">Apply →</button>
+              </div>
+              <p className="job-rate">$65 - $90 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">X</span>
+                    <span className="avatar">Y</span>
+                    <span className="avatar">Z</span>
+                  </div>
+                  <span className="hired-count">198 hired this month</span>
+                </div>
+                <span className="earnings">💰 $1350</span>
+              </div>
+            </div>
+
+            {/* Job Card 9 */}
+            <div className="job-card">
+              <div className="card-header">
+                <h3 className="job-title">Medical Terminology Specialist</h3>
+                <button className="apply-btn">Apply →</button>
+              </div>
+              <p className="job-rate">$42 - $62 / hour</p>
+              <div className="job-footer">
+                <div className="job-stats">
+                  <div className="avatars">
+                    <span className="avatar">G</span>
+                    <span className="avatar">I</span>
+                    <span className="avatar">U</span>
+                  </div>
+                  <span className="hired-count">151 hired this month</span>
+                </div>
+                <span className="earnings">💰 $780</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  )
+}
+
+export default LandingPage

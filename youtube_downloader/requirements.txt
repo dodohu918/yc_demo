@@ -1,0 +1,10 @@
+yt-dlp
+pyannote.audio>=4.0
+torch>=2.8.0
+torchaudio>=2.8.0
+python-dotenv
+fastapi
+uvicorn[standard]
+sqlalchemy
+python-multipart
+pydantic>=2.0

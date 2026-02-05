@@ -1,0 +1,39 @@
+{
+  "config": {
+    "epochs": 50,
+    "batch_size": 4,
+    "learning_rate": 0.0001,
+    "input_size": [
+      512,
+      512
+    ],
+    "num_landmarks": 19,
+    "heatmap_sigma": 5.0,
+    "augmentation_enabled": true,
+    "augmentation_config": {
+      "rotation_range": 10,
+      "scale_range": [
+        0.9,
+        1.1
+      ],
+      "brightness_range": [
+        0.85,
+        1.15
+      ],
+      "contrast_range": [
+        0.85,
+        1.15
+      ],
+      "horizontal_flip_prob": 0.5
+    },
+    "train_images": 280,
+    "val_images": 60,
+    "test_images": 60,
+    "device": "mps",
+    "use_combined_data": true
+  },
+  "epochs": [],
+  "best_epoch": null,
+  "best_val_loss": null,
+  "final_metrics": {}
+}

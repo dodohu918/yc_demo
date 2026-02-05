@@ -1,0 +1,35 @@
+
+Option 1: pyannote.audio (Recommended)
+A dedicated speaker diarization library that uses neural embeddings to distinguish speakers by voice characteristics.
+
+
+from pyannote.audio import Pipeline
+pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization")
+diarization = pipeline("audio.mp3", num_speakers=2)
+Pros: Purpose-built for this, works well with atypical speech, runs locally
+Cons: Requires HuggingFace token (free), GPU helpful but not required
+
+Option 2: Resemblyzer + Simple Clustering
+Extract voice embeddings and cluster them - very lightweight.
+
+
+from resemblyzer import VoiceEncoder, preprocess_wav
+encoder = VoiceEncoder()
+embedding = encoder.embed_utterance(wav)
+# Then cluster embeddings by similarity
+Pros: Simple, fast, no GPU needed
+Cons: Need to implement segmentation logic yourself
+
+Option 3: WavLM / Wav2Vec2 Embeddings
+Extract embeddings from speech segments and cluster by speaker similarity.
+
+Pros: State-of-the-art embeddings
+Cons: More complex, needs GPU for reasonable speed
+
+My Recommendation
+pyannote.audio is the best balance - it's specifically designed for speaker diarization by voice characteristics, handles atypical speech well, and outputs timestamps directly. You could:
+
+Use pyannote for speaker segmentation (who speaks when)
+Optionally still use Amazon Transcribe for text (if needed)
+Split audio based on pyannote's speaker labels
+Would you like me to plan an implementation using pyannote.audio? It would replace or supplement Amazon Transcribe's diarization while keeping the transcription if you still want text
