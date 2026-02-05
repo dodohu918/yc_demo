@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import { Upload, Trash2, Eye } from 'lucide-react'
-import { getImages, uploadImage, deleteImage, type Image } from '@/utils/api'
+import { getImages, uploadImage, deleteImage, UPLOADS_BASE_URL, type Image } from '@/utils/api'
 
 export default function ImagesPage() {
   const [isDragging, setIsDragging] = useState(false)
@@ -120,7 +120,7 @@ function ImageCard({ image, onDelete }: { image: Image; onDelete: () => void }) 
     <div className="group relative bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200">
       <div className="aspect-square bg-slate-100">
         <img
-          src={`/uploads/${image.filename}`}
+          src={`${UPLOADS_BASE_URL}/${image.filename}`}
           alt={image.original_filename}
           className="w-full h-full object-cover"
         />

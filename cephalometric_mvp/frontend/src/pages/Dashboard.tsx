@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import { Image as ImageIcon, Activity, CheckCircle } from 'lucide-react'
-import { getImages, getPredictionStatus } from '@/utils/api'
+import { getImages, getPredictionStatus, UPLOADS_BASE_URL } from '@/utils/api'
 
 export default function Dashboard() {
   const { data: images } = useQuery({
@@ -87,7 +87,7 @@ export default function Dashboard() {
                 className="group relative aspect-square bg-slate-100 rounded-lg overflow-hidden hover:ring-2 hover:ring-primary-500 transition-all"
               >
                 <img
-                  src={`/uploads/${image.filename}`}
+                  src={`${UPLOADS_BASE_URL}/${image.filename}`}
                   alt={image.original_filename}
                   className="w-full h-full object-cover"
                 />

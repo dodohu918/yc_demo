@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     debug: bool = True
     allowed_origins: str = os.getenv(
         "CORS_ORIGINS",
-        "http://localhost:5173,http://localhost:5175,http://localhost:3000"
+        "http://localhost:5173,http://localhost:5175,http://localhost:3000,https://dodohu918.github.io"
     )
 
     # File Storage (relative paths will be resolved to absolute)

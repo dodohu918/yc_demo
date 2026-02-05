@@ -11,6 +11,7 @@ import {
   updateAnnotation,
   predictLandmarks,
   createFeedback,
+  UPLOADS_BASE_URL,
 } from '@/utils/api'
 import { useAnnotationStore } from '@/hooks/useAnnotationStore'
 import { useKeyboardShortcuts, KEYBOARD_SHORTCUTS } from '@/hooks/useKeyboardShortcuts'
@@ -341,7 +342,7 @@ export default function AnnotationPage() {
         {/* Canvas area */}
         <div className="flex-1 bg-slate-900 overflow-hidden">
           <AnnotationCanvas
-            imageUrl={`/uploads/${image.filename}`}
+            imageUrl={`${UPLOADS_BASE_URL}/${image.filename}`}
             imageWidth={image.width}
             imageHeight={image.height}
             onCanvasClick={handleCanvasClick}
