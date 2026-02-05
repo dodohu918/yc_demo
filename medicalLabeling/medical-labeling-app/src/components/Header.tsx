@@ -2,14 +2,9 @@ import { Link } from 'react-router-dom'
 
 const apps = [
   {
-    name: 'Medical Labeling',
+    name: 'Medical Labeling Job Search',
     url: import.meta.env.VITE_MEDICAL_LABELING_URL || '/',
     isActive: true,
-  },
-  {
-    name: 'Speaker Diarization',
-    url: import.meta.env.VITE_SPEAKER_DIARIZATION_URL || 'http://localhost:5174',
-    isActive: false,
   },
   {
     name: 'Cephalometric Tool',
@@ -17,8 +12,13 @@ const apps = [
     isActive: false,
   },
   {
-    name: 'Op Note',
+    name: 'Op Note Label Tool',
     url: import.meta.env.VITE_OP_NOTE_URL || 'http://localhost:5176',
+    isActive: false,
+  },
+  {
+    name: 'Speaker Diarization',
+    url: import.meta.env.VITE_SPEAKER_DIARIZATION_URL || 'http://localhost:5174',
     isActive: false,
   },
 ]

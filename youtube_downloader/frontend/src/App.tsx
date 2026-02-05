@@ -4,14 +4,9 @@ import { EditorPage } from './pages/EditorPage';
 
 const apps = [
   {
-    name: 'Medical Labeling',
+    name: 'Medical Labeling Job Search',
     url: import.meta.env.VITE_MEDICAL_LABELING_URL || 'http://localhost:5173',
     isActive: false,
-  },
-  {
-    name: 'Speaker Diarization',
-    url: import.meta.env.VITE_SPEAKER_DIARIZATION_URL || '/',
-    isActive: true,
   },
   {
     name: 'Cephalometric Tool',
@@ -19,9 +14,14 @@ const apps = [
     isActive: false,
   },
   {
-    name: 'Op Note',
+    name: 'Op Note Label Tool',
     url: import.meta.env.VITE_OP_NOTE_URL || 'http://localhost:5176',
     isActive: false,
+  },
+  {
+    name: 'Speaker Diarization',
+    url: import.meta.env.VITE_SPEAKER_DIARIZATION_URL || '/',
+    isActive: true,
   },
 ];
 
