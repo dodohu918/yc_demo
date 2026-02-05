@@ -34,7 +34,7 @@ function LandingPage() {
           </Link>
         </div>
         <div className="hero-image">
-          <img src="/image.png" alt="Medical Labeling" />
+          <img src={`${import.meta.env.BASE_URL}image.png`} alt="Medical Labeling" />
         </div>
       </main>
 

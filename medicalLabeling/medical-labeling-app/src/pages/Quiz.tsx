@@ -85,7 +85,7 @@ function Quiz() {
           </p>
 
           <div className="image-container" onClick={handleImageClick}>
-            <img src="/parotid tumor.png" alt="Parotid Ultrasound" />
+            <img src={`${import.meta.env.BASE_URL}parotid tumor.png`} alt="Parotid Ultrasound" />
             {markers.map(marker => (
               <div
                 key={marker.id}
