@@ -45,6 +45,42 @@ function LandingPage() {
         </div>
       </main>
 
+      {/* Data Selection Section */}
+      <section className="data-selection">
+        <div className="data-selection-container">
+          <div className="dropdown-group">
+            <label className="dropdown-label">Select hospitals of interest</label>
+            <select className="dropdown-select">
+              <option value="">Choose a hospital...</option>
+              <option value="ucsf">UCSF</option>
+              <option value="stanford">Stanford</option>
+              <option value="johns-hopkins">Johns Hopkins</option>
+              <option value="mayo-clinic">Mayo Clinic</option>
+            </select>
+          </div>
+          <div className="dropdown-group">
+            <label className="dropdown-label">Select your Data of interest</label>
+            <select className="dropdown-select">
+              <option value="">Choose data type...</option>
+              <option value="ultrasounds">Ultrasounds</option>
+              <option value="ekgs">EKGs</option>
+              <option value="ct">CT</option>
+              <option value="mri">MRI</option>
+            </select>
+          </div>
+          <div className="dropdown-group">
+            <label className="dropdown-label">Select criteria for Medical Expertise</label>
+            <select className="dropdown-select">
+              <option value="">Choose criteria...</option>
+              <option value="diagnosis">Diagnosis</option>
+              <option value="pathology">Pathology</option>
+              <option value="medication-record">Medication Record</option>
+              <option value="longevity">Longevity</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
       {/* Partner Logos */}
       <section className="partners">
         <div className="partners-track">
