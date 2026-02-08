@@ -81,44 +81,6 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* Partner Logos */}
-      <section className="partners">
-        <div className="partners-track">
-          <div className="partners-logos">
-            <img src="https://via.placeholder.com/150x50/6366f1/ffffff?text=HealthTech" alt="Partner 1" />
-            <img src="https://via.placeholder.com/150x50/8b5cf6/ffffff?text=MediCare" alt="Partner 2" />
-            <img src="https://via.placeholder.com/150x50/ec4899/ffffff?text=BioLab" alt="Partner 3" />
-            <img src="https://via.placeholder.com/150x50/f59e0b/ffffff?text=ClinicalAI" alt="Partner 4" />
-            <img src="https://via.placeholder.com/150x50/10b981/ffffff?text=MedData" alt="Partner 5" />
-            <img src="https://via.placeholder.com/150x50/3b82f6/ffffff?text=HealthAI" alt="Partner 6" />
-            <img src="https://via.placeholder.com/150x50/ef4444/ffffff?text=DiagnosticX" alt="Partner 7" />
-            <img src="https://via.placeholder.com/150x50/6366f1/ffffff?text=HealthTech" alt="Partner 1" />
-            <img src="https://via.placeholder.com/150x50/8b5cf6/ffffff?text=MediCare" alt="Partner 2" />
-            <img src="https://via.placeholder.com/150x50/ec4899/ffffff?text=BioLab" alt="Partner 3" />
-            <img src="https://via.placeholder.com/150x50/f59e0b/ffffff?text=ClinicalAI" alt="Partner 4" />
-            <img src="https://via.placeholder.com/150x50/10b981/ffffff?text=MedData" alt="Partner 5" />
-            <img src="https://via.placeholder.com/150x50/3b82f6/ffffff?text=HealthAI" alt="Partner 6" />
-            <img src="https://via.placeholder.com/150x50/ef4444/ffffff?text=DiagnosticX" alt="Partner 7" />
-          </div>
-          <div className="partners-logos" aria-hidden="true">
-            <img src="https://via.placeholder.com/150x50/6366f1/ffffff?text=HealthTech" alt="Partner 1" />
-            <img src="https://via.placeholder.com/150x50/8b5cf6/ffffff?text=MediCare" alt="Partner 2" />
-            <img src="https://via.placeholder.com/150x50/ec4899/ffffff?text=BioLab" alt="Partner 3" />
-            <img src="https://via.placeholder.com/150x50/f59e0b/ffffff?text=ClinicalAI" alt="Partner 4" />
-            <img src="https://via.placeholder.com/150x50/10b981/ffffff?text=MedData" alt="Partner 5" />
-            <img src="https://via.placeholder.com/150x50/3b82f6/ffffff?text=HealthAI" alt="Partner 6" />
-            <img src="https://via.placeholder.com/150x50/ef4444/ffffff?text=DiagnosticX" alt="Partner 7" />
-            <img src="https://via.placeholder.com/150x50/6366f1/ffffff?text=HealthTech" alt="Partner 1" />
-            <img src="https://via.placeholder.com/150x50/8b5cf6/ffffff?text=MediCare" alt="Partner 2" />
-            <img src="https://via.placeholder.com/150x50/ec4899/ffffff?text=BioLab" alt="Partner 3" />
-            <img src="https://via.placeholder.com/150x50/f59e0b/ffffff?text=ClinicalAI" alt="Partner 4" />
-            <img src="https://via.placeholder.com/150x50/10b981/ffffff?text=MedData" alt="Partner 5" />
-            <img src="https://via.placeholder.com/150x50/3b82f6/ffffff?text=HealthAI" alt="Partner 6" />
-            <img src="https://via.placeholder.com/150x50/ef4444/ffffff?text=DiagnosticX" alt="Partner 7" />
-          </div>
-        </div>
-      </section>
-
       {/* Job Opportunities Section */}
       <section className="opportunities">
         <div className="opportunities-container">

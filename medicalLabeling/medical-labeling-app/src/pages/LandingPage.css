@@ -53,17 +53,19 @@
 .hero-title {
   font-size: 4.5rem;
   font-weight: 800;
-  color: #1e1b4b;
+  color: white;
   line-height: 1.2;
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
   font-size: 1.8rem;
-  color: #334155;
+  color: white;
   margin-bottom: 2rem;
   font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .hero-tags {
@@ -131,12 +133,11 @@
 }
 
 .data-selection-container {
-  max-width: 1200px;
+  max-width: 400px;
   margin: 0 auto;
   display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .dropdown-group {
@@ -178,17 +179,6 @@
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
-@media (max-width: 768px) {
-  .data-selection-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .dropdown-group {
-    width: 100%;
-    max-width: 400px;
-  }
-}
 
 /* Partners Section */
 .partners {
