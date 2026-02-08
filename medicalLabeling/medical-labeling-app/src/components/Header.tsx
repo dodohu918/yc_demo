@@ -69,7 +69,7 @@ function Header() {
     <header style={headerStyle}>
       <div style={containerStyle}>
         <Link to="/" style={logoStyle}>
-          YC Demo
+          DeepMine-YC Demo
         </Link>
         <nav style={navStyle}>
           {apps.map((app) => (

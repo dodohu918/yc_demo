@@ -38,7 +38,7 @@ export default function Layout() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
         <div className="px-4 py-3 flex items-center justify-between">
           <a href="/" className="text-xl font-bold text-slate-800">
-            YC Demo
+            DeepMine-YC Demo
           </a>
           <nav className="flex gap-2">
             {apps.map((app) => (

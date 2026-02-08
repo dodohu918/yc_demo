@@ -10,14 +10,24 @@ function LandingPage() {
 
       {/* Hero Section */}
       <main className="hero">
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={`${import.meta.env.BASE_URL}hero-background.mp4`} type="video/mp4" />
+        </video>
+        <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1 className="hero-title">
-            Bridging the Gap Between Medical
+            Clinical Reality Infrastructure
             <br />
-            Data and AI Development
+            for Healthcare AI
           </h1>
           <p className="hero-subtitle">
-            Providing Custom Medical Data Curation and Labeling Services
+            Building the data foundation that powers next-generation medical AI
           </p>
           <div className="hero-tags">
             <span className="tag">Medical Data Innovation</span>
@@ -32,9 +42,6 @@ function LandingPage() {
             Explore more
             <span className="arrow">→</span>
           </Link>
-        </div>
-        <div className="hero-image">
-          <img src={`${import.meta.env.BASE_URL}image.png`} alt="Medical Labeling" />
         </div>
       </main>
 
