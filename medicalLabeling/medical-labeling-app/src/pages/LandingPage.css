@@ -53,19 +53,19 @@
 .hero-title {
   font-size: 4.5rem;
   font-weight: 800;
-  color: white;
+  color: #ffffff !important;
   line-height: 1.2;
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
   font-size: 1.8rem;
-  color: white;
+  color: #ffffff !important;
   margin-bottom: 2rem;
   font-weight: 400;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-tags {
