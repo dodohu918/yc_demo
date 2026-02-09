@@ -34,19 +34,22 @@
   font-weight: 300;
   color: #ffffff !important;
   line-height: 1.15;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
+}
+
+.typing-line {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #10b981;
+  min-height: 3.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .typing-cursor {
   display: inline;
-  font-weight: 100;
+  font-weight: 300;
   animation: blink 0.7s step-end infinite;
-  margin-left: 2px;
-}
-
-.typing-cursor.hidden {
-  display: none;
 }
 
 @keyframes blink {

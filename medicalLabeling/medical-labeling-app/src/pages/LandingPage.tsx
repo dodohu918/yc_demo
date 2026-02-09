@@ -4,26 +4,40 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import './LandingPage.css'
 
+const phrases = ['AI Company', 'AI Researcher', 'AI Developer']
+
 function LandingPage() {
-  const [aiText, setAiText] = useState('')
-  const [showCursor, setShowCursor] = useState(true)
+  const [displayText, setDisplayText] = useState('')
+  const [phraseIndex, setPhraseIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setAiText('A')
-    }, 1500)
-    const timer2 = setTimeout(() => {
-      setAiText('AI')
-    }, 1800)
-    const timer3 = setTimeout(() => {
-      setShowCursor(false)
-    }, 2500)
-    return () => {
-      clearTimeout(timer1)
-      clearTimeout(timer2)
-      clearTimeout(timer3)
+    const currentPhrase = phrases[phraseIndex]
+    let timeout: ReturnType<typeof setTimeout>
+
+    if (!isDeleting) {
+      if (displayText.length < currentPhrase.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentPhrase.slice(0, displayText.length + 1))
+        }, 100)
+      } else {
+        timeout = setTimeout(() => {
+          setIsDeleting(true)
+        }, 2000)
+      }
+    } else {
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1))
+        }, 60)
+      } else {
+        setIsDeleting(false)
+        setPhraseIndex((phraseIndex + 1) % phrases.length)
+      }
     }
-  }, [])
+
+    return () => clearTimeout(timeout)
+  }, [displayText, isDeleting, phraseIndex])
 
   return (
     <div className="landing-page">
@@ -35,9 +49,12 @@ function LandingPage() {
           <h1 className="hero-title">
             Clinical Reality Infrastructure
             <br />
-            for Healthcare {aiText}
-            <span className={`typing-cursor ${showCursor ? '' : 'hidden'}`}>|</span>
+            for Healthcare
           </h1>
+          <div className="typing-line">
+            {displayText}
+            <span className="typing-cursor">_</span>
+          </div>
           <Link to="/get-started" className="cta-btn">
             Explore more
             <span className="arrow">→</span>
