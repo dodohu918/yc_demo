@@ -44,7 +44,7 @@ const containerStyle: React.CSSProperties = {
 }
 
 const logoStyle: React.CSSProperties = {
-  fontSize: '1.25rem',
+  fontSize: '1.875rem',
   fontWeight: 'bold',
   color: '#1e293b',
   textDecoration: 'none',

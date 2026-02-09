@@ -29,7 +29,7 @@ function AppHeader() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="/" className="text-xl font-bold text-slate-800">
+        <a href="/" className="text-3xl font-bold text-slate-800">
           DeepMine-YC Demo
         </a>
         <nav className="flex gap-2">
