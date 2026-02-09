@@ -1,9 +1,30 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import './LandingPage.css'
 
 function LandingPage() {
+  const [aiText, setAiText] = useState('')
+  const [showCursor, setShowCursor] = useState(true)
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setAiText('A')
+    }, 1500)
+    const timer2 = setTimeout(() => {
+      setAiText('AI')
+    }, 1800)
+    const timer3 = setTimeout(() => {
+      setShowCursor(false)
+    }, 2500)
+    return () => {
+      clearTimeout(timer1)
+      clearTimeout(timer2)
+      clearTimeout(timer3)
+    }
+  }, [])
+
   return (
     <div className="landing-page">
       <Header />
@@ -14,7 +35,8 @@ function LandingPage() {
           <h1 className="hero-title">
             Clinical Reality Infrastructure
             <br />
-            for Healthcare AI
+            for Healthcare {aiText}
+            <span className={`typing-cursor ${showCursor ? '' : 'hidden'}`}>|</span>
           </h1>
           <Link to="/get-started" className="cta-btn">
             Explore more

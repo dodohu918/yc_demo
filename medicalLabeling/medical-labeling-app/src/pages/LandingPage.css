@@ -38,6 +38,22 @@
   letter-spacing: -0.01em;
 }
 
+.typing-cursor {
+  display: inline;
+  font-weight: 100;
+  animation: blink 0.7s step-end infinite;
+  margin-left: 2px;
+}
+
+.typing-cursor.hidden {
+  display: none;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 .hero-visual {
   position: absolute;
   top: 0;
