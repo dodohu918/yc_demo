@@ -10,38 +10,28 @@ function LandingPage() {
 
       {/* Hero Section */}
       <main className="hero">
-        <video
-          className="hero-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src={`${import.meta.env.BASE_URL}hero-background.mp4`} type="video/mp4" />
-        </video>
-        <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1 className="hero-title">
             Clinical Reality Infrastructure
             <br />
             for Healthcare AI
           </h1>
-          <p className="hero-subtitle">
-            Building the data foundation that powers next-generation medical AI
-          </p>
-          <div className="hero-tags">
-            <span className="tag">Medical Data Innovation</span>
-            <span className="tag-separator">|</span>
-            <span className="tag">Clinical Labeling & Curation</span>
-            <span className="tag-separator">|</span>
-            <span className="tag">HIPAA Compliance & Governance</span>
-            <span className="tag-separator">|</span>
-            <span className="tag">Healthcare AI Partnerships</span>
-          </div>
           <Link to="/get-started" className="cta-btn">
             Explore more
             <span className="arrow">→</span>
           </Link>
+        </div>
+        <div className="hero-visual">
+          <video
+            className="hero-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={`${import.meta.env.BASE_URL}hero-background.mp4`} type="video/mp4" />
+          </video>
+          <div className="hero-overlay"></div>
         </div>
       </main>
 
